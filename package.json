@@ -21,7 +21,8 @@
     "hbs": "^4.2.0",
     "mongoose-slug-plugin": "^2.1.0",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",

@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+ }
+ 
+ 
+ .header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+ }
+ 
+ 
+ .header .logo img {
+    width: 40px;
+ }
+ 
+ 
+ .header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.5rem; 
+    font-weight: bold;
+ }
+ 
+ 
+ .sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 3rem 1.5rem; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding-top: 5rem; 
+    box-sizing: border-box;
+ }
+ 
+ 
+ .sidebar a {
+    display: block;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+ }
+ 
+ 
+ .sidebar .active {
+    color: #ff6600;
+ }
+ 
+ 
+ main {
+    margin-left: 220px;
+    padding: 3rem 2rem;
+    padding-top: 6rem; 
+ }
+   main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+  }
+   h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .profile-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profile-form label {
+    font-weight: bold;
+  }
+  
+  .profile-form input,
+  .profile-form select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .profile-form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .profile-form button#editButton {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .profile-form button#saveButton {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  #feedbackMessage {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  

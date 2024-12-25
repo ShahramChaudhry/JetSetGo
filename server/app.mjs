@@ -6,8 +6,8 @@ import { register, passport, ensureAuthenticated } from './auth.mjs';
 import { PORT, SESSION_SECRET } from './config.mjs';
 import connectDB from './db.mjs';
 import itineraryRoutes from './routes/itineraryRoutes.js';
-import visaRoutes from './routes/visaRoutes.js'; 
-import Itinerary from './models/Itinerary.js'
+import visaRoutes from './routes/visaRoutes.js';
+import Itinerary from './models/Itinerary.js';
 
 connectDB();
 const app = express();
@@ -27,12 +27,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 app.use('/api/itineraries', itineraryRoutes);
 app.use('/api/visa', visaRoutes);
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+  res.sendFile(path.join(__dirname, '../client/pages/register.html'));
 });
 
 app.post('/api/login', passport.authenticate('local'), (req, res) => {
@@ -41,22 +41,22 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+  res.sendFile(path.join(__dirname,  '../client/pages/register.html'));
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html')); // Serve login.html
+  res.sendFile(path.join(__dirname, '../client/pages/login.html')); // Serve login.html
 });
 
 app.get('/itineraries', ensureAuthenticated, (req, res) => {
   res.redirect('/dashboard');
 });
 app.get('/create_itinerary', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'createitinerary.html'));
+  res.sendFile(path.join(__dirname, '../client/pages/createitinerary.html'));
 });
 
 app.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+  res.sendFile(path.join(__dirname, '../client/pages/dashboard.html'));
 });
 
 app.get('/api/itineraries/:id', ensureAuthenticated, async (req, res) => {
@@ -95,7 +95,7 @@ app.delete('/api/itineraries/:id', async (req, res) => {
 
 
 app.get('/profile', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'profile.html'));
+  res.sendFile(path.join(__dirname,  '../client/pages/profile.html'));
 });
 
 

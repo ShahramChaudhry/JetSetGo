@@ -1,8 +1,9 @@
 import express from 'express';
-import Itinerary from '../server/models/Itinerary.js';
+import Itinerary from '../models/Itinerary.js';
+
 import { ensureAuthenticated } from '../auth.mjs';
 import axios from 'axios';
-import User from '../server/models/User.js';
+import User from '../models/User.js';
 
 const router = express.Router();
 

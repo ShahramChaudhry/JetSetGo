@@ -1,0 +1,98 @@
+
+
+   body {
+    font-family: Arial, sans-serif;
+   
+    margin: 0;
+  }
+  
+ 
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding-top: 5rem;
+    box-sizing: border-box;
+  }
+  
+  .sidebar a {
+    display: block;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .sidebar .active {
+    color: #ff6600;
+  }
+  
+  main {
+    margin-left: 220px;
+    padding-top: 6rem;
+    padding: 3rem 2rem;
+
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  input[type='date'],
+  #destinationInput {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  button {
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #ff7b00;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .destination-tag {
+    display: inline-block;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  
+  .destination-tag span {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #ff6600;
+  }
+ 

@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "app.mjs",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "app.mjs" },
+      { "src": "/register", "dest": "/client/pages/register.html" },
+      { "src": "/login", "dest": "/client/pages/login.html" },
+      { "src": "/dashboard", "dest": "/client/pages/dashboard.html" },
+      { "src": "/profile", "dest": "/client/pages/profile.html" },
+      { "src": "/create_itinerary", "dest": "/client/pages/createitinerary.html" },
+      { "src": "/(.*)", "dest": "/client/public/index.html" }
+    ],
+    "env": {
+      "DSN": "mongodb+srv://sc9425:Sherri.2003@jet.6wa9v.mongodb.net/?retryWrites=true&w=majority&appName=jet",
+      "PORT": "3000",
+      "SESSION_SECRET": "63b176a968a1a8f27943448ad7e7d014659d4846e80689f00ca2b42c1b855d0cc6187c38b9076b7864c2478a29311c8683c1eb12cc69d19d3126988ff09f1d68"
+    }
+  }
+  

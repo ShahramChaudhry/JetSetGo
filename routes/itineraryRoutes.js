@@ -1,6 +1,5 @@
 import express from 'express';
 import Itinerary from '../models/Itinerary.js';
-
 import { ensureAuthenticated } from '../auth.mjs';
 import axios from 'axios';
 import User from '../models/User.js';

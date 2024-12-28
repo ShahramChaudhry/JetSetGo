@@ -27,8 +27,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(express.static(path.join(__dirname, '../public')));
-
+app.use(express.static(path.join(__dirname, '../public')));
+app.use('/public', express.static(path.join(__dirname, '../client/public')));
 
 app.use('/api/itineraries', itineraryRoutes);
 app.use('/api/visa', visaRoutes);

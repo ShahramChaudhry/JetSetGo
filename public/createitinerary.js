@@ -100,7 +100,7 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
 
     if (response.ok) {
       alert('Itinerary saved successfully!');
-      window.location.href = '/dashboard'; 
+      window.location.href = '/dashboard.html'; 
     } else {
       alert(result.message || 'Failed to save itinerary');
     }

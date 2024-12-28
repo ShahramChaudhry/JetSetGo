@@ -33,33 +33,33 @@ app.use('/public', express.static(path.join(__dirname, '../client/public')));
 app.use('/api/itineraries', itineraryRoutes);
 app.use('/api/visa', visaRoutes);
 
-app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/register.html'));
-});
+// app.get('/register', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/public/register.html'));
+// });
 
 app.post('/api/login', passport.authenticate('local'), (req, res) => {
   console.log('Logged-in user:', req.user); 
   res.status(200).json({ message: 'Login successful' });
 });
 
-app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname,  '../client/public/register.html'));
-});
+// app.get('/register', (req, res) => {
+//   res.sendFile(path.join(__dirname,  '../client/public/register.html'));
+// });
 
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/login.html')); // Serve login.html
-});
+// app.get('/login', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/public/login.html')); // Serve login.html
+// });
 
-app.get('/itineraries', ensureAuthenticated, (req, res) => {
-  res.redirect('/dashboard');
-});
-app.get('/create_itinerary', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/createitinerary.html'));
-});
+// app.get('/itineraries', ensureAuthenticated, (req, res) => {
+//   res.redirect('/dashboard');
+// });
+// app.get('/create_itinerary', ensureAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/public/createitinerary.html'));
+// });
 
-app.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/dashboard.html'));
-});
+// app.get('/dashboard', ensureAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/public/dashboard.html'));
+// });
 
 app.get('/api/itineraries/:id', ensureAuthenticated, async (req, res) => {
   try {
@@ -96,9 +96,9 @@ app.delete('/api/itineraries/:id', async (req, res) => {
 
 
 
-app.get('/profile', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname,  '../client/public/profile.html'));
-});
+// app.get('/profile', ensureAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname,  '../client/public/profile.html'));
+// });
 
 
 app.get('/api/itineraries', ensureAuthenticated, async (req, res) => {

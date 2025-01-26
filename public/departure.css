@@ -52,7 +52,7 @@ body {
   }
   
   input[type='date'],
-  #destinationInput {
+  #departureInput {
     padding: 10px;
     font-size: 1rem;
     border: 2px solid #FFA500;
@@ -80,7 +80,7 @@ body {
     margin-top: 2rem;
   }
   
-  .destination-tag {
+  .departure-tag {
     display: inline-block;
     background-color: #f4f4f4;
     border: 1px solid #ccc;
@@ -90,7 +90,7 @@ body {
     font-size: 1rem;
   }
   
-  .destination-tag span {
+  .departure-tag span {
     margin-left: 5px;
     cursor: pointer;
     color: #ff6600;

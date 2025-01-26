@@ -1,4 +1,4 @@
-let destinations = [];
+let departures = [];
 let countryCodes = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -11,22 +11,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     alert('Failed to load country codes. Please refresh the page.');
   }
 });
-class Destination {
+class departure {
   constructor(city, country) {
     this.city = city;
     this.country = country;
   }
 }
 
-function addDestination() {
-  const input = document.getElementById('destinationInput');
-  const destination = input.value.trim();
+function adddeparture() {
+  const input = document.getElementById('departureInput');
+  const departure = input.value.trim();
 
-  if (destination) {
-    const [city, countryName] = destination.split(', ');
+  if (departure) {
+    const [city, countryName] = departure.split(', ');
 
     if (!city || !countryName) {
-      alert("Please enter the destination in 'City, Country' format.");
+      alert("Please enter the departure in 'City, Country' format.");
       return;
     }
 
@@ -39,31 +39,31 @@ function addDestination() {
       return;
     }
 
-    const newDestination = new Destination(city, country.code);
-    destinations.push(newDestination);
-    renderDestinations();
+    const newdeparture = new departure(city, country.code);
+    departures.push(newdeparture);
+    renderdepartures();
     input.value = ''; 
   } else {
-    alert('Please enter a destination.');
+    alert('Please enter a departure.');
   }
 }
-function renderDestinations() {
-  const container = document.getElementById('destinationsContainer');
-  container.innerHTML = destinations
+function renderdepartures() {
+  const container = document.getElementById('departuresContainer');
+  container.innerHTML = departures
     .map(
       (dest, index) => `
-      <div class="destination-tag">
+      <div class="departure-tag">
         ${dest.city}, ${dest.country}
-        <span onclick="removeDestination(${index})">×</span>
+        <span onclick="removedeparture(${index})">×</span>
       </div>
     `
     )
     .join('');
 }
 
-function removeDestination(index) {
-  destinations.splice(index, 1);
-  renderDestinations();
+function removedeparture(index) {
+  departures.splice(index, 1);
+  renderdepartures();
 }
 
 document.getElementById('itineraryForm').addEventListener('submit', async (event) => {
@@ -77,8 +77,8 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
     return;
   }
 
-  if (destinations.length === 0) {
-    alert('Please add at least one destination.');
+  if (departures.length === 0) {
+    alert('Please add at least one departure.');
     return;
   }
 
@@ -92,7 +92,7 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
       body: JSON.stringify({
         start_date: startDate,
         end_date: endDate,
-        destinations,
+        departures,
       }),
     });
 

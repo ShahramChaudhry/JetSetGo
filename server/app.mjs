@@ -109,6 +109,9 @@ app.get('/api/itineraries', ensureAuthenticated, async (req, res) => {
   }
 });
 
+app.get('/departure', ensureAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/departure.html'));
+});
 
 app.post('/api/register', async (req, res) => {
   const { username, email, password, nationality } = req.body;

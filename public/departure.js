@@ -116,7 +116,7 @@ let departures = [];
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Fetch airport data from cleaned_airports.json
-    const response = await fetch('/cleaned_airports.json');
+    const response = await fetch('cleaned_airports.json');
     const airportData = await response.json();
 
     // Populate the dropdown with airport data

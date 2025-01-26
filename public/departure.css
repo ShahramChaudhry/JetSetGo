@@ -1,12 +1,7 @@
-
-
 body {
     font-family: Arial, sans-serif;
-   
     margin: 0;
   }
-  
- 
   
   .sidebar {
     width: 200px;
@@ -36,7 +31,6 @@ body {
     margin-left: 220px;
     padding-top: 6rem;
     padding: 3rem 2rem;
-
   }
   
   h1 {
@@ -95,29 +89,32 @@ body {
     cursor: pointer;
     color: #ff6600;
   }
- 
+  
+  /* Dropdown and Search Button Container */
   .dropdown-container {
-    display: flex;
-    align-items: center;
-    position: relative;
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    gap: 0.5rem; /* Add spacing between dropdown and button */
   }
   
   #departureInput {
-    flex: 1; /* Input takes up available space */
+    flex: 1; /* Allow the input to grow and fill available space */
   }
   
+  #search-btn {
+    margin-left: 8px; /* Add spacing between dropdown and button */
+  }
+  
+  /* Dropdown Styling */
   #departureDropdown {
-    position: absolute; /* Position dropdown below the input field */
-    top: 100%; /* Position right below the input */
-    left: 0;
-    width: 100%; /* Match the width of the input */
-    max-height: 200px; /* Set a maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ccc; /* Add a border for clarity */
-    border-radius: 5px; /* Optional: Rounded corners */
-    background-color: white; /* Background color for dropdown */
-    z-index: 1000; /* Ensure it appears above other elements */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
+    max-height: 200px; /* Limit dropdown height */
+    overflow-y: auto; /* Enable scrolling if needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   #departureDropdown li {
@@ -127,8 +124,4 @@ body {
   
   #departureDropdown li:hover {
     background-color: #f2f2f2;
-  }
-  
-  #search-btn {
-    margin-left: 8px; /* Add space between input and button */
   }

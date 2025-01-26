@@ -96,22 +96,39 @@ body {
     color: #ff6600;
   }
  
+  .dropdown-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  #departureInput {
+    flex: 1; /* Input takes up available space */
+  }
+  
   #departureDropdown {
-    max-height: 200px; /* Set a maximum height for the dropdown */
-    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
-    border: 1px solid #ccc; /* Optional: Add a border for clarity */
-    border-radius: 5px; /* Optional: Rounded corners for better design */
-    background-color: white; /* Dropdown background color */
-    position: absolute; /* Ensure dropdown doesn't affect layout flow */
-    z-index: 1000; /* Ensure the dropdown appears above other elements */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
+    position: absolute; /* Position dropdown below the input field */
+    top: 100%; /* Position right below the input */
+    left: 0;
+    width: 100%; /* Match the width of the input */
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Add a border for clarity */
+    border-radius: 5px; /* Optional: Rounded corners */
+    background-color: white; /* Background color for dropdown */
+    z-index: 1000; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
   }
   
   #departureDropdown li {
-    padding: 10px; /* Add padding for better spacing */
-    cursor: pointer; /* Make the items clickable */
+    padding: 10px;
+    cursor: pointer;
   }
   
   #departureDropdown li:hover {
-    background-color: #f2f2f2; /* Highlight the hovered option */
+    background-color: #f2f2f2;
+  }
+  
+  #search-btn {
+    margin-left: 8px; /* Add space between input and button */
   }

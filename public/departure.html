@@ -112,8 +112,13 @@
       
       <div class="space-y-2">
         <label for="departureInput" class="block font-bold text-gray-700">Select Departure</label>
-        <input type="text" id="departureInput" placeholder="Type to search..." class="w-96 px-3 py-2 border border-gray-300 rounded">
-        <ul id="departureDropdown" class="w-96 bg-white border border-gray-300 rounded mt-1 hidden"></ul>
+        <div class="dropdown-container">
+          <input type="text" id="departureInput" placeholder="Type to search..." class="w-64 px-3 py-2 border border-gray-300 rounded">
+          <ul id="departureDropdown" class="hidden"></ul>
+          <button type="button" id="search-btn" class="ml-2 bg-[#ff7b00] text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
+            Search
+          </button>
+        </div>
       </div>
 
       <div id="departuresContainer" class="mt-4 space-y-2"></div>

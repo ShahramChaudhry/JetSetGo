@@ -28,7 +28,7 @@
       Profile
     </a>
     <a href="/departure.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 bg-orange-100 ">
-      Depature
+      Departure
     </a>
   </div>
 
@@ -44,19 +44,22 @@
         <label for="endDate" class="block font-bold text-gray-700">End Date</label>
         <input type="date" id="endDate" class="w-64 px-3 py-2 border border-gray-300 rounded" required>
       </div>
+      
       <div class="space-y-2">
-        <label class="block font-bold text-gray-700">Add departure</label>
-        <input type="text" id="departureInput" placeholder="Enter departure (e.g., Paris, France)" class="w-96 px-3 py-2 border border-gray-300 rounded">
-        <button type="button" id="add-departure-btn" onclick="adddeparture()" class="bg-[#ff7b00] text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
-          Departure
-        </button>
+        <label for="departureSelect" class="block font-bold text-gray-700">Select Departure</label>
+        <select id="departureSelect" class="w-96 px-3 py-2 border border-gray-300 rounded">
+          <option value="">Select an airport</option>
+        </select>
       </div>
+
+      <div id="departuresContainer" class="mt-4 space-y-2"></div>
+
       <button type="submit" id="save-itinerary-btn" class="bg-[#ff7b00] text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
         Search
       </button>
     </form>
   </main>
-  <script src="/createitinerary.js"></script>
+  <script src="/departure.js"></script>
   <script src="/logout.js"></script>
 </body>
 </html> -->
@@ -108,10 +111,9 @@
       </div>
       
       <div class="space-y-2">
-        <label for="departureSelect" class="block font-bold text-gray-700">Select Departure</label>
-        <select id="departureSelect" class="w-96 px-3 py-2 border border-gray-300 rounded">
-          <option value="">Select an airport</option>
-        </select>
+        <label for="departureInput" class="block font-bold text-gray-700">Select Departure</label>
+        <input type="text" id="departureInput" placeholder="Type to search..." class="w-96 px-3 py-2 border border-gray-300 rounded">
+        <ul id="departureDropdown" class="w-96 bg-white border border-gray-300 rounded mt-1 hidden"></ul>
       </div>
 
       <div id="departuresContainer" class="mt-4 space-y-2"></div>

@@ -96,3 +96,22 @@ body {
     color: #ff6600;
   }
  
+  #departureDropdown {
+    max-height: 200px; /* Set a maximum height for the dropdown */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
+    border: 1px solid #ccc; /* Optional: Add a border for clarity */
+    border-radius: 5px; /* Optional: Rounded corners for better design */
+    background-color: white; /* Dropdown background color */
+    position: absolute; /* Ensure dropdown doesn't affect layout flow */
+    z-index: 1000; /* Ensure the dropdown appears above other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
+  }
+  
+  #departureDropdown li {
+    padding: 10px; /* Add padding for better spacing */
+    cursor: pointer; /* Make the items clickable */
+  }
+  
+  #departureDropdown li:hover {
+    background-color: #f2f2f2; /* Highlight the hovered option */
+  }

@@ -1,14 +1,12 @@
- <!DOCTYPE html
-<!-- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Itineraries</title>
-  <link rel="stylesheet" href="dashboard.css">
+  <title>Create New Itinerary - JetSetGo</title>
   <link href="output.css" rel="stylesheet">
-  
 </head>
-<body>
+<body class="bg-gray-50 font-sans text-gray-800">
   <header class="flex justify-between items-center w-full px-6 py-4 bg-[#333333] text-white fixed top-0 left-0 z-50">
     <div class="flex items-center space-x-4">
       <img src="logo.png" alt="JetSetGo Logo" class="w-10 h-10">
@@ -19,40 +17,27 @@
     </nav>
   </header>
   
-
   <div class="fixed top-0 left-0 h-full w-52 bg-gray-100 pt-20 px-4">
     <a href="/createitinerary.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
       Create New Itinerary
     </a>
-    <a href="/dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 bg-orange-100">
+    <a href="/dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
       My Itineraries
     </a>
     <a href="/profile.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 ">
       Profile
     </a>
-    <a href="/departure.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 ">
-      Depature
+    <a href="/departure.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+      Departure
     </a>
-    <a href="/destinations.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+    <a href="/destinations.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 bg-orange-100">
         Destination
       </a>
   </div>
-  
+
   <main class="ml-56 mt-20 px-6">
-    <h1 class="text-orange-500 text-xl font-bold mb-4">Your Itineraries</h1>
-    <div class="itineraries-container" id="itineraries-container">
-    </div>
   </main>
-  </main>
-  <div id="itinerary-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div id="modal-body">
-      </div>
-    </div>
-  </div>
-  <script src="/dashboard.js"></script>
+  <script src="/destinations.js"></script>
   <script src="/logout.js"></script>
 </body>
-</html> -->
-
+</html>

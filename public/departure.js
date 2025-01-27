@@ -104,7 +104,7 @@
 
 let airports = [];
 let departures = [];
-let userNationality = null; // To store the user's nationality
+let userNationality = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -212,13 +212,13 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
         (country['Visa Category'] === 'Visa-Free' || country['Visa Category'] === 'Visa-On-Arrival')
     );
 
-    // Store data for flight search
+    // Store data in session storage
     sessionStorage.setItem('visaFreeCountries', JSON.stringify(visaFreeAndOnArrivalCountries));
     sessionStorage.setItem('departure', JSON.stringify(departureData));
     sessionStorage.setItem('dates', JSON.stringify({ startDate, endDate }));
 
-    // Proceed with flight searches or redirect to the next step
-    alert('Visa-Free and Visa-On-Arrival countries fetched. Ready for flight search!');
+    // Redirect to the destinations page
+    window.location.href = '/destinations.html';
   } catch (error) {
     console.error('Error processing destinations:', error);
     alert('An error occurred. Please try again.');

@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const userData = await profileResponse.json();
     userNationality = userData.nationality;
-    console.log('User nationality:', userNationality);
   } catch (error) {
     console.error('Error fetching nationality:', error);
     alert('Failed to fetch user nationality. Please log in again.');
@@ -188,7 +187,7 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
   }
 
   if (!selectedDeparture) {
-    alert('Please select a valid departure location.');
+    alert('Please select a valid departure location from the dropdown.');
     return;
   }
 
@@ -201,23 +200,19 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
     const departureData = JSON.parse(selectedDeparture);
     departures.push(departureData);
 
-    // Fetch visa-free and visa-on-arrival countries
-    const visaDataResponse = await fetch('/visa_data.json'); // Replace with your visa data file path
+    const visaDataResponse = await fetch('/visa_data.json');
     const visaData = await visaDataResponse.json();
 
-    // Filter visa-free and visa-on-arrival countries
     const visaFreeAndOnArrivalCountries = visaData.filter(
       (country) =>
         country['From Code'] === userNationality &&
         (country['Visa Category'] === 'Visa-Free' || country['Visa Category'] === 'Visa-On-Arrival')
     );
 
-    // Store data in session storage
     sessionStorage.setItem('visaFreeCountries', JSON.stringify(visaFreeAndOnArrivalCountries));
     sessionStorage.setItem('departure', JSON.stringify(departureData));
     sessionStorage.setItem('dates', JSON.stringify({ startDate, endDate }));
 
-    // Redirect to the destinations page
     window.location.href = '/destinations.html';
   } catch (error) {
     console.error('Error processing destinations:', error);

@@ -1,14 +1,30 @@
-// let departures = [];
+
 // let airports = [];
+// let departures = [];
+// let userNationality = null;
 
 // document.addEventListener('DOMContentLoaded', async () => {
 //   try {
-//     // Fetch airport data from cleaned_airports.json
+//     // Fetch airport data
 //     const response = await fetch('/cleaned_airports.json');
 //     airports = await response.json();
 //   } catch (error) {
 //     console.error('Error loading airport data:', error);
 //     alert('Failed to load airport data. Please refresh the page.');
+//   }
+
+//   // Fetch user's nationality
+//   try {
+//     const profileResponse = await fetch('/api/profile', { credentials: 'include' });
+//     if (!profileResponse.ok) {
+//       throw new Error('Failed to fetch profile data');
+//     }
+//     const userData = await profileResponse.json();
+//     userNationality = userData.nationality;
+//   } catch (error) {
+//     console.error('Error fetching nationality:', error);
+//     alert('Failed to fetch user nationality. Please log in again.');
+//     return;
 //   }
 
 //   const inputField = document.getElementById('departureInput');
@@ -27,10 +43,12 @@
 //       );
 
 //       if (filteredAirports.length > 0) {
+//         dropdown.classList.remove('hidden');
 //         filteredAirports.forEach((airport) => {
 //           const listItem = document.createElement('li');
-//           listItem.className = 'px-3 py-2 hover:bg-gray-200 cursor-pointer';
-//           listItem.textContent = `${airport.airport_name} (${airport.iata_code}) - ${airport.city}, ${airport.country}`;
+//           listItem.className = 'dropdown-item';
+//           listItem.innerHTML = `<strong>${airport.airport_name}</strong> (${airport.iata_code})<br>
+//                                 <span class="dropdown-subtext">${airport.city}, ${airport.country}</span>`;
 //           listItem.dataset.value = JSON.stringify({
 //             city: airport.city,
 //             country: airport.country,
@@ -38,23 +56,28 @@
 //           });
 
 //           listItem.addEventListener('click', () => {
-//             inputField.value = listItem.textContent;
+//             inputField.value = `${airport.airport_name} (${airport.iata_code})`;
 //             inputField.dataset.selected = listItem.dataset.value;
-//             dropdown.classList.add('hidden');
+//             dropdown.classList.add('hidden'); // Hide dropdown after selection
 //           });
 
 //           dropdown.appendChild(listItem);
 //         });
-
-//         dropdown.classList.remove('hidden');
 //       }
+//     }
+//   });
+
+//   // Hide dropdown when clicking outside
+//   document.addEventListener('click', (event) => {
+//     if (!inputField.contains(event.target) && !dropdown.contains(event.target)) {
+//       dropdown.classList.add('hidden');
 //     }
 //   });
 // });
 
 // // Handle form submission
 // document.getElementById('itineraryForm').addEventListener('submit', async (event) => {
-//   event.preventDefault(); // Prevent default form submission
+//   event.preventDefault();
 
 //   const startDate = document.getElementById('startDate').value;
 //   const endDate = document.getElementById('endDate').value;
@@ -67,7 +90,12 @@
 //   }
 
 //   if (!selectedDeparture) {
-//     alert('Please select a valid departure location.');
+//     alert('Please select a valid departure location from the dropdown.');
+//     return;
+//   }
+
+//   if (!userNationality) {
+//     alert('Failed to retrieve user nationality. Please log in again.');
 //     return;
 //   }
 
@@ -75,36 +103,35 @@
 //     const departureData = JSON.parse(selectedDeparture);
 //     departures.push(departureData);
 
-//     const response = await fetch('/api/itineraries', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       credentials: 'include', // Include cookies for authentication
-//       body: JSON.stringify({
-//         start_date: startDate,
-//         end_date: endDate,
-//         departures,
-//       }),
-//     });
+//     const visaDataResponse = await fetch('/visa_data.json');
+//     const visaData = await visaDataResponse.json();
 
-//     const result = await response.json();
+//     const visaFreeAndOnArrivalCountries = visaData.filter(
+//       (country) =>
+//         country['From Code'] === userNationality &&
+//         (country['Visa Category'] === 'Visa-Free' || country['Visa Category'] === 'Visa-On-Arrival')
+//     );
 
-//     if (response.ok) {
-//       alert('Itinerary saved successfully!');
-//       window.location.href = '/dashboard.html'; // Redirect to the dashboard
-//     } else {
-//       alert(result.message || 'Failed to save itinerary');
-//     }
+//     sessionStorage.setItem('visaFreeCountries', JSON.stringify(visaFreeAndOnArrivalCountries));
+//     sessionStorage.setItem('departure', JSON.stringify(departureData));
+//     sessionStorage.setItem('dates', JSON.stringify({ startDate, endDate }));
+
+//     window.location.href = '/destinations.html';
 //   } catch (error) {
-//     console.error('Error saving itinerary:', error);
-//     alert('An error occurred while saving the itinerary. Please try again.');
+//     console.error('Error processing destinations:', error);
+//     alert('An error occurred. Please try again.');
 //   }
 // });
 
 let airports = [];
 let departures = [];
 let userNationality = null;
+
+// ✅ Function to format date from MM-DD-YYYY → YYYY-MM-DD
+function formatDateToYYYYMMDD(dateString) {
+    const [year, month, day] = new Date(dateString).toISOString().split("T")[0].split("-");
+    return `${year}-${month}-${day}`;
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -133,7 +160,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const inputField = document.getElementById('departureInput');
   const dropdown = document.getElementById('departureDropdown');
 
-  // Handle input to filter airports
   inputField.addEventListener('input', () => {
     const query = inputField.value.toLowerCase().trim();
     dropdown.innerHTML = '';
@@ -147,10 +173,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       );
 
       if (filteredAirports.length > 0) {
+        dropdown.classList.remove('hidden');
         filteredAirports.forEach((airport) => {
           const listItem = document.createElement('li');
-          listItem.className = 'px-3 py-2 hover:bg-gray-200 cursor-pointer';
-          listItem.textContent = `${airport.airport_name} (${airport.iata_code}) - ${airport.city}, ${airport.country}`;
+          listItem.className = 'dropdown-item';
+          listItem.innerHTML = `<strong>${airport.airport_name}</strong> (${airport.iata_code})<br>
+                                <span class="dropdown-subtext">${airport.city}, ${airport.country}</span>`;
           listItem.dataset.value = JSON.stringify({
             city: airport.city,
             country: airport.country,
@@ -158,26 +186,31 @@ document.addEventListener('DOMContentLoaded', async () => {
           });
 
           listItem.addEventListener('click', () => {
-            inputField.value = listItem.textContent;
+            inputField.value = `${airport.airport_name} (${airport.iata_code})`;
             inputField.dataset.selected = listItem.dataset.value;
-            dropdown.classList.add('hidden');
+            dropdown.classList.add('hidden'); // Hide dropdown after selection
           });
 
           dropdown.appendChild(listItem);
         });
-
-        dropdown.classList.remove('hidden');
       }
+    }
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!inputField.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.classList.add('hidden');
     }
   });
 });
 
-// Handle form submission
+// ✅ Handle form submission and format departure date
 document.getElementById('itineraryForm').addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const startDate = document.getElementById('startDate').value;
-  const endDate = document.getElementById('endDate').value;
+  let startDate = document.getElementById('startDate').value;
+  let endDate = document.getElementById('endDate').value;
   const inputField = document.getElementById('departureInput');
   const selectedDeparture = inputField.dataset.selected;
 
@@ -197,6 +230,10 @@ document.getElementById('itineraryForm').addEventListener('submit', async (event
   }
 
   try {
+    // ✅ Convert dates to YYYY-MM-DD format
+    startDate = formatDateToYYYYMMDD(startDate);
+    endDate = formatDateToYYYYMMDD(endDate);
+
     const departureData = JSON.parse(selectedDeparture);
     departures.push(departureData);
 

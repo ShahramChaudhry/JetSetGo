@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
   }
@@ -90,25 +90,24 @@ body {
     color: #ff6600;
   }
   
-  /* Dropdown and Search Button Container */
+  
   .dropdown-container {
-    display: flex; /* Align items in a row */
-    align-items: center; /* Center items vertically */
-    gap: 0.5rem; /* Add spacing between dropdown and button */
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
   }
   
   #departureInput {
-    flex: 1; /* Allow the input to grow and fill available space */
+    flex: 1; 
   }
   
   #search-btn {
-    margin-left: 8px; /* Add spacing between dropdown and button */
+    margin-left: 8px; 
   }
   
-  /* Dropdown Styling */
   #departureDropdown {
-    max-height: 200px; /* Limit dropdown height */
-    overflow-y: auto; /* Enable scrolling if needed */
+    max-height: 200px; 
+    overflow-y: auto; 
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
@@ -124,4 +123,141 @@ body {
   
   #departureDropdown li:hover {
     background-color: #f2f2f2;
-  }
+  } */
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+  
+.sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding-top: 5rem;
+    box-sizing: border-box;
+}
+  
+.sidebar a {
+    display: block;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+  
+.sidebar .active {
+    color: #ff6600;
+}
+  
+main {
+    margin-left: 220px;
+    padding-top: 6rem;
+    padding: 3rem 2rem;
+}
+  
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+  
+input[type='date'],
+#departureInput {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+}
+  
+button {
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+  
+button:hover {
+    background-color: #ff7b00;
+}
+
+/* Dropdown and Search Button Layout */
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+#departureInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #FFA500;
+  border-radius: 5px;
+  outline: none;
+}
+
+#search-btn {
+  padding: 10px 15px;
+  background-color: #FFA500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#search-btn:hover {
+  background-color: #ff7b00;
+}
+
+/* Dropdown Styling */
+#departureDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+#departureDropdown .dropdown-item {
+  padding: 12px;
+  cursor: pointer;
+  list-style: none;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s;
+}
+
+#departureDropdown .dropdown-item:hover {
+  background-color: #ffeedc;
+}
+
+#departureDropdown .dropdown-subtext {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-top: 2px;
+}
+
+.hidden {
+  display: none;
+}

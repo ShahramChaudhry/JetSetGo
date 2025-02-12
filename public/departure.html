@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -67,6 +67,80 @@
       </button>
     </form>
   </main>
+  <script src="/departure.js"></script>
+  <script src="/logout.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Itinerary - JetSetGo</title>
+  <link href="output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <header class="flex justify-between items-center w-full px-6 py-4 bg-[#333333] text-white fixed top-0 left-0 z-50">
+    <div class="flex items-center space-x-4">
+      <img src="logo.png" alt="JetSetGo Logo" class="w-10 h-10">
+      <span class="text-lg font-bold">JetSetGo</span>
+    </div>
+    <nav>
+      <a href="/index.html" class="text-white hover:text-orange-400 font-bold">Logout</a>
+    </nav>
+  </header>
+  
+  <div class="fixed top-0 left-0 h-full w-52 bg-gray-100 pt-20 px-4">
+    <!-- <a href="/createitinerary.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+      Create New Itinerary
+    </a> -->
+    <a href="/dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+      My Itineraries
+    </a>
+    <a href="/profile.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+      Profile
+    </a>
+    <a href="/departure.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700 bg-orange-100">
+      Departure
+    </a>
+    <a href="/destinations.html" class="block py-2 px-4 rounded hover:bg-gray-200 font-bold text-gray-700">
+      Destination
+    </a>
+  </div>
+
+  <main class="ml-56 mt-20 px-6">
+    <h1 class="text-orange-500 text-xl font-bold mb-4">Create New Itinerary!</h1>
+    <form id="itineraryForm" class="space-y-6">
+      <div class="space-y-2">
+        <label for="startDate" class="block font-bold text-gray-700">Start Date</label>
+        <input type="date" id="startDate" class="w-64 px-3 py-2 border border-gray-300 rounded" required>
+      </div>
+
+      <div class="space-y-2">
+        <label for="endDate" class="block font-bold text-gray-700">End Date</label>
+        <input type="date" id="endDate" class="w-64 px-3 py-2 border border-gray-300 rounded" required>
+      </div>
+
+      <div class="space-y-2">
+        <label for="departureInput" class="block font-bold text-gray-700">Select Departure</label>
+        <div class="dropdown-container flex items-center gap-2">
+          <input 
+            type="text" 
+            id="departureInput" 
+            placeholder="Type to search..." 
+            class="w-80 px-3 py-2 border border-gray-300 rounded">
+          <button type="submit" id="search-btn" class="bg-[#ff7b00] text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
+            Search
+          </button>
+        </div>
+        <ul id="departureDropdown" class="dropdown hidden"></ul>
+      </div>
+
+      <div id="departuresContainer" class="mt-4 space-y-2"></div>
+    </form>
+  </main>
+  
   <script src="/departure.js"></script>
   <script src="/logout.js"></script>
 </body>

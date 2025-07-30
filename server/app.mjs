@@ -8,6 +8,8 @@ import connectDB from './db.mjs';
 import itineraryRoutes from './routes/itineraryRoutes.js';
 import visaRoutes from './routes/visaRoutes.js';
 import Itinerary from './models/Itinerary.js';
+import amadeusRoutes from './routes/amadeusRoutes.js';
+
 
 connectDB();
 const app = express();
@@ -29,6 +31,8 @@ app.use(passport.session());
 
 app.use('/api/itineraries', itineraryRoutes);
 app.use('/api/visa', visaRoutes);
+app.use('/api/amadeus', amadeusRoutes);
+
 
 // app.get('/register', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../public/register.html'));

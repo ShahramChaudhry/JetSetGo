@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const rawRes = await fetch(`/api/amadeus/destinations?origin=${iata}&startDate=${startDate}&endDate=${endDate}`);
+    console.log('[Amadeus Destinations Response]', rawRes.status);
     const amadeusData = await rawRes.json();
+    console.log('[Amadeus Data]', amadeusData);
     const airportData = await fetch('/cleaned_airports.json').then(r => r.json());
 
     const iataToAirport = {};

@@ -6,7 +6,11 @@ const DestinationSchema = new mongoose.Schema({
   city: { type: String },
   arrival_date: { type: Date },
   departure_date: { type: Date },
-  activities: [String]  
+  activities: [String],
+  visa_info: {
+    category: { type: Object },  // stores { name: 'Visa-free' }
+    error: { type: String }
+  }
 });
 
 const ItinerarySchema = new mongoose.Schema({

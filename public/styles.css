@@ -148,3 +148,23 @@ button {
 button:hover {
     background-color: #e65c00;
 }
+
+.flight-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+  }
+.flight-card:hover {
+    transform: translateY(-3px);
+}
+
+.custom-spinner {
+    width: 48px;
+    height: 48px;
+    border: 6px solid #f97316; /* orange-500 */
+    border-top: 6px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }

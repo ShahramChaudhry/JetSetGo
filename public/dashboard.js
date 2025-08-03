@@ -19,16 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.setAttribute('data-id', itinerary._id);
 
         let visaInfoHTML = '';
-        if (itinerary.visaRequirements && itinerary.destinations) {
-          for (let i = 0; i < itinerary.visaRequirements.length; i++) {
-            const visaReq = itinerary.visaRequirements[i];
-            const destination = itinerary.destinations[i]; 
+        if (itinerary.destinations && itinerary.destinations.length > 0) {
+          for (const destination of itinerary.destinations) {
             const city = destination?.city || 'Unknown City';
             const country = destination?.country || 'Unknown Country';
-
-            console.log('Processing visa requirement:', visaReq, 'Linked destination:', destination);
-
-            const visaInfo = visaReq.visa_info;
+            const visaInfo = destination?.visa_info;
 
             if (visaInfo?.error) {
               visaInfoHTML += `<p><strong>${city}, ${country}:</strong> <span style="color: red;">Error: ${visaInfo.error}</span></p>`;

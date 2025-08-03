@@ -55,33 +55,41 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 
 router.post('/', ensureAuthenticated, async (req, res) => {
   try {
-    const { start_date, end_date, destinations } = req.body;
+    const { title, start_date, end_date, destinations } = req.body;
     const userId = req.user._id;
 
-    const visaRequirements = await Promise.all(
+    const processedDestinations = await Promise.all(
       destinations.map(async (destination) => {
+        if (destination.visa_info) return destination;
+
         const visaApiUrl = `https://rough-sun-2523.fly.dev/visa/${req.user.nationality}/${destination.country}`;
         try {
           const response = await axios.get(visaApiUrl);
-          return { ...destination, visa_info: response.data };
+          return {
+            ...destination,
+            visa_info: response.data,
+          };
         } catch (error) {
-          return { ...destination, visa_info: { error: 'Unable to fetch visa requirements' } };
+          return {
+            ...destination,
+            visa_info: { error: 'Unable to fetch visa requirements' },
+          };
         }
       })
     );
 
     const newItinerary = new Itinerary({
-      title: 'New Itinerary',
+      title: title || 'Untitled Itinerary',
       user: userId,
       start_date,
       end_date,
-      destinations: visaRequirements,
+      destinations: processedDestinations,
     });
 
-    const savedItinerary = await newItinerary.save();
-    res.status(201).json({ message: 'Itinerary created successfully', itinerary: savedItinerary });
+    const saved = await newItinerary.save();
+    res.status(201).json(saved);
   } catch (error) {
-    console.error('Error creating itinerary:', error.message);
+    console.error('❌ Error saving itinerary:', error);
     res.status(500).json({ message: 'Error creating itinerary' });
   }
 });
